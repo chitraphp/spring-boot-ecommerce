@@ -19,6 +19,8 @@ public class User {
 
     @Size(min=3)
     private String job;
+    private String userId;
+    private Integer age;
     @Size(min=3)
     private String name;
     @Email
@@ -29,5 +31,6 @@ public class User {
     @Size(min=6)
     private String password;
     private String userType;
+    private String userCol;
 
 }

@@ -15,6 +15,7 @@ public class Product {
     private String description;
     private double price;
     private BufferedImage image;
+    //private LongBlob image;
 
     @NotNull(message = "Product name is required.")
     private String name;
