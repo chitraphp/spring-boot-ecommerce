@@ -10,9 +10,7 @@ public class Authority {
     private String authority;
     private String username;
 
-    @OneToMany(mappedBy = "User")
-    @JoinColumn(name="user_id")
-    private User user;
+
 
 
 

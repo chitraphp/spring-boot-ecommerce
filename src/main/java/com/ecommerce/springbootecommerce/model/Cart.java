@@ -15,7 +15,7 @@ public class Cart {
     @JsonFormat(pattern = "dd/MM/yyyy") private LocalDate dateAdded;
     @Email
     private String email;
-    private Integer order_id;
+    //private Integer order_id;
     private Double price;
     private Integer product_id;
     private String product_name;

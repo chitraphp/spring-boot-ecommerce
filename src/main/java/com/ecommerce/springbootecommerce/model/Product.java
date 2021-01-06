@@ -14,14 +14,22 @@ public class Product {
 
     private String description;
     private double price;
-    private BufferedImage image;
+    //private BufferedImage image;
     //private LongBlob image;
+    private String imageUrl;
 
     @NotNull(message = "Product name is required.")
     private String name;
 
     private Integer quantity;
 
+    public Product(String description, double price, String imageUrl, @NotNull(message = "Product name is required.") String name, Integer quantity) {
+        this.description = description;
+        this.price = price;
+        this.imageUrl = imageUrl;
+        this.name = name;
+        this.quantity = quantity;
+    }
 }
 
 
