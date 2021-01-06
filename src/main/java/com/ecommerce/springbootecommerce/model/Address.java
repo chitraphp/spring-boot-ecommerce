@@ -5,25 +5,87 @@ import javax.persistence.*;
 @Entity
 public class Address {
     @Id
-    @GeneratedValue
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String address;
     private String city;
     private String state;
     private String country;
-    private Integer zipcode;
-    private String phoneNumber;
-    //@OneToOne(mappedBy = "Address")
-   // @JoinColumn(name="user_id")
-    //private User user;
+    private int zipcode;
+    private String phonenumber;
 
-    public Address(String address, String city, String state, String country, Integer zipcode, String phoneNumber, User user) {
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "userid", nullable = false)
+    private User user;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
         this.city = city;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
         this.state = state;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
         this.country = country;
+    }
+
+    public int getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
-        this.phoneNumber = phoneNumber;
-        //this.user = user;
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Address [id=" + id + ", address=" + address + ", city=" + city + ", state=" + state + ", country="
+                + country + ", zipcode=" + zipcode + ", phonenumber=" + phonenumber + ", user=" + user + "]";
     }
 }

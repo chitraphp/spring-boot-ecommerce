@@ -1,50 +1,124 @@
 package com.ecommerce.springbootecommerce.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class User {
+    private static final long serialVersionUID = -8850740904859933967L;
     @Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @GeneratedValue
-    private Integer id ;
-
-    @Past
-    private Date dateof_birth;
-
-    @Size(min=3)
-    private String job;
-    private String userId;
-    private Integer age;
-    @Size(min=3)
-    private String name;
-    @Email
+    private int userid;
     private String email;
-    private Boolean isEnabled;
-    @Size(min=4)
     private String username;
-    @Size(min=6)
     private String password;
-    private String userType;
-    private String userCol;
+    private String usertype;
+    @Column(name = "is_enabled")
+    private boolean isEnabled;
 
-    public User(@Past Date dateof_birth, @Size(min = 3) String job, String userId, Integer age, @Size(min = 3) String name, @Email String email, Boolean isEnabled, @Size(min = 4) String username, @Size(min = 6) String password, String userType) {
-        this.dateof_birth = dateof_birth;
-        this.job = job;
-        this.userId = userId;
-        this.age = age;
-        this.name = name;
-        this.email = email;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Authority> roles;
+
+    public List<Authority> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Authority> roles) {
+        this.roles = roles;
+    }
+
+    public boolean isEnabled() {
+        return isEnabled;
+    }
+
+    public void setEnabled(boolean isEnabled) {
         this.isEnabled = isEnabled;
+    }
+
+    public int getUserid() {
+        return userid;
+    }
+
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
+
+    public String getUsertype() {
+        return usertype;
+    }
+
+    public void setUsertype(String usertype) {
+        this.usertype = usertype;
+    }
+
+    @Override
+    public String toString() {
+        return "User [userid=" + userid + ", email=" + email + ", username=" + username + ", password=" + password
+                + ", age=" + age + ", address=" + address + "]";
+    }
+
+    public User() {
+        super();
+    }
+
+    public User(int userid, String email, String username, String password, int age, Address address) {
+        super();
+        this.userid = userid;
+        this.email = email;
         this.username = username;
         this.password = password;
-        this.userType = userType;
-        //this.userCol = userCol;
+        this.age = age;
+        this.address = address;
     }
+
+    private int age;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
+    private Address address;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
 }

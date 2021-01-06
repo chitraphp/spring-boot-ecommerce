@@ -1,7 +1,7 @@
 package com.ecommerce.springbootecommerce.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
+
 import java.util.ArrayList;
 import java.util.List;
 @Entity
@@ -9,16 +9,16 @@ public class Cart1 {
     @Id
     @GeneratedValue
     private Integer Id;
-    @Email
-    private String email;
+
+    private String userId;
     @OneToMany(mappedBy = "cart1")
     private List<CartItem> Items;
-    public String getEmail() {
-        return email;
+    public String getuserId() {
+        return userId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setuserId(String userId) {
+        this.userId = userId;
     }
 
     public List<CartItem> getItems() {
@@ -29,8 +29,8 @@ public class Cart1 {
         Items = items;
     }
 
-    public Cart1(String email){
-        this.email = email;
+    public Cart1(String userId){
+        this.userId = userId;
         Items = new ArrayList<CartItem>();
     }
 }
