@@ -7,10 +7,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product,Integer> {
-    Product findByProductid(int productid);
+public interface ProductRepository extends JpaRepository<Product,Long> {
+    Product findById(int id);
 
-    void deleteByProductid(int productid);
+    void deleteById(int id);
 
     List<Product> findAll();
 }

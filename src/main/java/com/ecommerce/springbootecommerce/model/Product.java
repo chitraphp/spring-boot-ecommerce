@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
 public class Product {
     @Id
     @GeneratedValue
-    private Integer id;
+    private int id;
 
     private String description;
     private double price;
@@ -30,7 +30,7 @@ public class Product {
         super();
     }
 
-    public Product(Integer id,String description, double price, byte[] image, @NotNull(message = "Product name is required.") String name, Integer quantity) {
+    public Product(int id,String description, @NotNull(message = "Product name is required.") String name,double price,  int quantity,byte[] image) {
         this.id = id;
         this.description = description;
         this.price = price;

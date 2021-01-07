@@ -104,7 +104,7 @@ public class Validator {
         return false;
     }
 
-    public static boolean isPlaceOrderEmpty(Place_order plaOrd) {
+    public static boolean isPlaceOrderEmpty(PlaceOrder plaOrd) {
 
         if (plaOrd.getEmail() == null || plaOrd.getEmail() == "") {
             return true;
@@ -120,19 +120,19 @@ public class Validator {
         }
         return false;
     }
-/***
-    public static boolean isCartEmpty(Cart1 cart) {
 
-        if (cart. == null || cart.getEmail() == "") {
+    public static boolean isCartEmpty(Cart cart) {
+
+        if (cart.getEmail() == null || cart.getEmail() == "") {
             return true;
         }
-        if (cart. == null || cart.getProductname() == "") {
+        if (cart.getProductname() == null || cart.getProductname() == "") {
             return true;
         }
-        if (cart.getItems() == null) {
+        if (cart.getDateAdded() == null) {
             return true;
         }
-        if (cart. == 0) {
+        if (cart.getQuantity() == 0) {
             return true;
         }
         if (cart.getPrice() == 0) {
@@ -140,7 +140,7 @@ public class Validator {
         }
         return false;
     }
-****/
+
     public static boolean isStringEmpty(String input) {
         if (input == null || input.equals("")) {
             return true;
