@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.ecommerce.springbootecommerce.constants.ResponseCode;
 import com.ecommerce.springbootecommerce.constants.WebConstants;
 import com.ecommerce.springbootecommerce.exception.UserCustomException;
+import com.ecommerce.springbootecommerce.model.Address;
 import com.ecommerce.springbootecommerce.model.User;
+import com.ecommerce.springbootecommerce.repository.AddressRepository;
 import com.ecommerce.springbootecommerce.repository.UserRepository;
 import com.ecommerce.springbootecommerce.response.ServerResponse;
 import com.ecommerce.springbootecommerce.service.MyUserDetailsService;
@@ -54,6 +56,11 @@ public class HomeController {
 
     @Autowired
     private UserRepository userRepo;
+
+    @Autowired
+    private AddressRepository addressRepository;
+
+
 
     @Autowired
     private JwtUtil jwtutil;
@@ -103,6 +110,12 @@ public class HomeController {
                 resp.setStatus(ResponseCode.SUCCESS_CODE);
                 resp.setMessage(ResponseCode.CUST_REG);
                 User reg = userRepo.save(user);
+                Address add = new Address();
+
+
+                reg.setAddress(user.getAddress());
+
+
             }
         } catch (Exception e) {
             throw new UserCustomException("An error occured while saving user, please check details or try again");
